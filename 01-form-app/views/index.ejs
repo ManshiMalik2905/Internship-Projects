@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form-app</title>
+     <style>
+   body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #6a11cb, #2575fc); /* purple-blue gradient */
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 40px; /* space at top */
+    }
+
+    .form-container {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 15px;
+      width: 420px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2575fc;
+      margin-bottom: 25px;
+      font-size: 26px;
+      letter-spacing: 1px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 12px;
+      color: #333;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #2575fc;
+      outline: none;
+      box-shadow: 0 0 8px rgba(37, 117, 252, 0.3);
+    }
+
+    .radio-group {
+      margin-top: 8px;
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .radio-group input {
+      margin-right: 5px;
+    }
+
+    button {
+      margin-top: 18px;
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .submit-btn {
+      background: #2575fc;
+      color: white;
+    }
+
+    .submit-btn:hover {
+      background: #1a5edb;
+      transform: translateY(-2px);
+    }
+
+    .reset-btn {
+      background: #f44336;
+      color: white;
+      margin-top: 10px;
+    }
+
+    .reset-btn:hover {
+      background: #c62828;
+      transform: translateY(-2px);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+    <div class="form-container">
+    <h1>Form-App</h1>
+    <form action="/submit" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br><br>
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+        <br><br>
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" required></textarea>
+        <br><br>
+        <label for="gender">Gender:</label>
+        <label class="radio-group">
+            <input type="radio" id="male" name="gender" value="male" required>
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="female" required>
+            <label for="female">Female</label>
+            <input type="radio" id="other" name="gender" value="other" required>
+            <label for="other">Other</label>
+        
+        </label>
+        <br><br>
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+        <br><br>
+        <div id="errorMessage" style="color: red;"></div>
+        <div id="successMessage" style="color: green;"></div>
+    </form>
+     </div>
+    
+</body>
+</html>

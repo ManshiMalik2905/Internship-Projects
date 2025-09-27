@@ -1,0 +1,97 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column; /* Keep header, main, footer stacked */
+}
+
+/* Center form inside main */
+main {
+  flex-grow: 1; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Form box */
+.form-container {
+  background: white;
+  border-radius: 20px;
+  padding: 35px;
+  width: 100%;
+  max-width: 700px; /* Increased width */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  animation: fadeIn 1s ease-in-out;
+  color: black;
+}
+
+h1 {
+  text-align: center;
+  font-weight: 600;
+  color: #2575fc;
+  margin-bottom: 20px;
+}
+
+/* Input styling */
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  background: #f8f9fa;
+  color: #333;
+  transition: all 0.3s;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #2575fc;
+  box-shadow: 0 0 8px rgba(37, 117, 252, 0.3);
+}
+
+/* Buttons with gradient */
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-primary {
+  background: linear-gradient(45deg, #2575fc, #6a11cb);
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: scale(1.02);
+  box-shadow: 0 5px 15px rgba(37, 117, 252, 0.4);
+}
+
+.btn-danger {
+  background: linear-gradient(45deg, #ff512f, #dd2476);
+  color: white;
+}
+
+.btn-danger:hover {
+  transform: scale(1.02);
+  box-shadow: 0 5px 15px rgba(221, 36, 118, 0.4);
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

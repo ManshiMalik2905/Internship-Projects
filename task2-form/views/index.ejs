@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Form-App</title>
+  <style>
+    body { 
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #6a11cb, #2575fc); /* purple-blue gradient */
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 40px; /* space at top */
+    }
+
+    .form-container {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 15px;
+      width: 420px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2575fc;
+      margin-bottom: 25px;
+      font-size: 26px;
+      letter-spacing: 1px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 12px;
+      color: #333;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #2575fc;
+      outline: none;
+      box-shadow: 0 0 8px rgba(37, 117, 252, 0.3);
+    }
+
+    /* Gender radio buttons in one row */
+    .radio-group {
+      margin-top: 8px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .radio-group label {
+      font-weight: normal;
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    button {
+      margin-top: 18px;
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .submit-btn {
+      background: #2575fc;
+      color: white;
+    }
+
+    .submit-btn:hover {
+      background: #1a5edb;
+      transform: translateY(-2px);
+    }
+
+    .reset-btn {
+      background: #f44336;
+      color: white;
+      margin-top: 10px;
+    }
+
+    .reset-btn:hover {
+      background: #c62828;
+      transform: translateY(-2px);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h1>Form-App</h1>
+    <form method="POST" action="/submit" onsubmit="return validateForm()">
+      <label>Name:</label>
+      <input type="text" id="name" name="name">
+
+      <label>Email:</label>
+      <input type="email" id="email" name="email">
+
+      <label>Phone:</label>
+      <input type="text" id="phone" name="phone">
+
+      <label>Address:</label>
+      <textarea id="address" name="address"></textarea>
+
+      <label>Gender:</label>
+      <div class="radio-group">
+        <label><input type="radio" name="gender" value="Male"> Male</label>
+        <label><input type="radio" name="gender" value="Female"> Female</label>
+        <label><input type="radio" name="gender" value="Other"> Other</label>
+      </div>
+
+      <button type="submit" class="submit-btn">Submit</button>
+      <button type="reset" class="reset-btn">Reset</button>
+    </form>
+  </div>
+
+  <!-- Inline JS validation (from Task 2) -->
+  <script>
+    function validateForm() {
+      let name = document.getElementById("name").value.trim();
+      let email = document.getElementById("email").value.trim();
+      let phone = document.getElementById("phone").value.trim();
+      let address = document.getElementById("address").value.trim();
+      let gender = document.querySelector('input[name="gender"]:checked');
+
+      if (!name || !email || !phone || !address || !gender) {
+        alert("All fields are required!");
+        return false;
+      }
+
+      let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      if (!email.match(emailPattern)) {
+        alert("Enter a valid email address!");
+        return false;
+      }
+
+      let phonePattern = /^[0-9]{10}$/;
+      if (!phone.match(phonePattern)) {
+        alert("Enter a valid 10-digit phone number!");
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+</body>
+</html>
